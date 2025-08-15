@@ -50,7 +50,7 @@ const quotes = [
   }
 ];
 
-app.get('/quote', (res, req) => {
+app.get('/quote', (req, res) => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     res.json(randomQuote);
 })
