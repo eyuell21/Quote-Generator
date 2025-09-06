@@ -8,9 +8,11 @@ const newQuoteInput = document.getElementById('new-quote');
 const newAuthorInput = document.getElementById('new-author');
 const formStatus = document.getElementById('form-status');
 
+const url = 'https://eyuell21-quote-server440.hosting.codeyourfuture.io/';
+
 const fetchQuote = async () => {
     try {
-        const response = await fetch('https://eyuell21-quote-server440.hosting.codeyourfuture.io/')
+        const response = await fetch(url)
 
         const { quote, author } = await response.json();
 
@@ -35,7 +37,7 @@ const postQuote = async (e) => {
         return;
     }
     try {
-        const response = await fetch('http://localhost:3000/quote', {
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
