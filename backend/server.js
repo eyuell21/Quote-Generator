@@ -53,9 +53,25 @@ const quotes = [
 app.get('/quote', (req, res) => {
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
     res.json(randomQuote);
-})
+}) 
+
+app.use(express.json()); // Needed to parse JSON bodies
+
+app.post('/quote', (req, res) => {
+    const { quote, author } = req.body;
+
+    if (
+      !quote || !author || typeof quote !== 'string' || quote.trim() === '' ||
+      typeof author !== 'string' || author.trim() === ''
+      ) {
+        return res.status(400).json({ error: 'Quote and author are required.' });
+        }
+
+    quotes.push({ quote, author });
+    res.status(201).json({ message: 'Quote added successfully.' });
+});
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT,() => {
   console.log(`The Office Quote API running at http://localhost:${PORT}`);
-});
+}); 
