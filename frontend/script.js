@@ -8,10 +8,10 @@ const newQuoteInput = document.getElementById('new-quote');
 const newAuthorInput = document.getElementById('new-author');
 const formStatus = document.getElementById('form-status');
 
-const url = 'https://eyuell21-quote-server440.hosting.codeyourfuture.io'
+const url = 'https://eyuell21-quote-server440.hosting.codeyourfuture.io/'
 const fetchQuote = async () => {
     try {
-        const response = await fetch(url + '/quote')
+        const response = await fetch(url + 'quote')
 
 
         const { quote, author } = await response.json();
